@@ -13,6 +13,9 @@ class Piii
         'pint(o(zinho|zao)?|inho|ao)',
         'v(i|e)ad(o(zinho)?|inho|ao)',
         'f(o|u)d(er|emos)',
+        'rol(a|o)((zinha)?|ao|inha|na)',
+        'pic(a|ona|ao)',
+        'piro(c|k)(a(zinha)?|o|ona)',
         'fod(a|inha|ão|er|o|es|e|emos|eis|em)'
     );
 
@@ -20,18 +23,22 @@ class Piii
     {
     	$plvrs = self::$plvrs;
 		foreach ($plvrs as $key => $plvr) {
-			$plvr = preg_replace('/(\w)/i', '$1+', $plvr);
-			$plvr = preg_replace('/(a|ã)/', '[$1âàáã]', $plvr);
+			$plvr = preg_replace('/([\w])/i', '$1+', $plvr);
+			$plvr = preg_replace('/(a|ã)/', '[$1âàáã4]', $plvr);
     		$plvr = preg_replace('/(c)/', '[$1ç]', $plvr);
-            $plvr = preg_replace('/(e)/', '[$1êé]', $plvr);
-            $plvr = preg_replace('/(i)/', '[$1í]', $plvr);
-            $plvr = preg_replace('/(o)/', '[$1õôó]', $plvr);
-			$plvr = preg_replace('/(u)/', '[$1ûúü]', $plvr);
+            $plvr = preg_replace('/(e)/', '[$1êé3]', $plvr);
+            $plvr = preg_replace('/(i)/', '[$1í1]', $plvr);
+            $plvr = preg_replace('/(o)/', '[$1õôó0]', $plvr);
+			$plvr = preg_replace('/(s)/', '[$1s5]', $plvr);
+			$plvr = preg_replace('/(t)/', '[$1t7]', $plvr);
+			$plvr = preg_replace('/(u)/', '[$1ûúüv]', $plvr);
 
 			$plvrs[$key] = '(\b'. $plvr . '\b)';
     	}
 
-		$regex = '/'.implode('|', $plvrs).'/i';
+		$regex = '/'.implode('|', $plvrs).'/ui';
+		
+		pr($regex);
 		
     	return $regex;
     }
@@ -48,7 +55,7 @@ class Piii
 		return isset($matches[0]) ? $matches[0] : array();
     }
 
-    public static function substituir($str, $sstr = '[censurado]')
+    public static function substituir($str, $sstr = "[censurado]")
     {
     	return preg_replace(self::getRegex(), $sstr, $str);
     }
