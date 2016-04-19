@@ -1,4 +1,4 @@
-# Implementação em PHP pata a biblioteca https://github.com/theuves/piii.js
+# Implementação em PHP da biblioteca https://github.com/theuves/piii.js
 
 # Piii.PHP
 
