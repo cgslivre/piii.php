@@ -22,10 +22,9 @@ class Piii
     public static function getRegex()
     {
     	$plvrs = self::$plvrs;
-    	
 		foreach ($plvrs as $key => $plvr) {
 			$plvr = preg_replace('/([\w])/i', '$1+', $plvr);
-			$plvr = preg_replace('/(a|ã)/', '[$1âàáã4]', $plvr);
+			$plvr = preg_replace('/(a|ã)/', '[$1âàáã24]', $plvr);
     		$plvr = preg_replace('/(c)/', '[$1ç]', $plvr);
             $plvr = preg_replace('/(e)/', '[$1êé3]', $plvr);
             $plvr = preg_replace('/(i)/', '[$1í1]', $plvr);
