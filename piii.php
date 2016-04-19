@@ -38,8 +38,6 @@ class Piii
 
 		$regex = '/'.implode('|', $plvrs).'/ui';
 		
-		pr($regex);
-		
     	return $regex;
     }
 
